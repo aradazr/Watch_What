@@ -1,13 +1,23 @@
+import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:flutter/material.dart';
 import 'package:random_series/constans/inner_shadow.dart';
 import 'package:random_series/constans/responsive_text.dart';
+import 'package:random_series/data/project_manager.dart';
+import 'package:random_series/screens/serial_screen.dart';
+import 'package:random_series/data/project_data.dart';  // فرض بر این است که اینجا دیتای سریال ها قرار دارد.
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
+  // انتخاب تصادفی یک سریال از لیست
+  Series pickRandomSeries() {
+    return projects[Random().nextInt(projects.length)];
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -20,42 +30,65 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              width: size.width / 1.21,
-              child: Text(
-                textAlign: TextAlign.center,
-                textDirection: TextDirection.rtl,
-                style: TextStyle(
-                    color: Colors.white, fontFamily: 'vazirb',
-                     fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 20)
-                     ),
-                '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
+            Container(
+              alignment: Alignment.center,
+              width: size.width / 1.23,
+              height: size.height / 2.68,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Color.fromARGB(70, 182, 17, 17),
+                  Color.fromARGB(70, 80, 8, 8)
+                ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                borderRadius: BorderRadius.circular(39),
+              ),
+              child: SizedBox(
+                width: size.width / 1.596,
+                child: Text(
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'vazirb',
+                      fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 18)),
+                  '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
+                ),
               ),
             ),
             SizedBox(
               height: 25,
             ),
-            InnerShadow(
-              blur: 4,
-              color: Color.fromARGB(60, 0, 0, 0),
-              offset: Offset(0, 4),
-
-              child: Container(
-                alignment: Alignment.center,
-                height: 57,
-                width: 182,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(34),
-                  
-                  
+            GestureDetector(
+              onTap: () {
+                // ارسال سریال تصادفی به SerialScreen
+                Series randomSeries = pickRandomSeries();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SerialScreen(serial: randomSeries),
+                  ),
+                );
+              },
+              child: InnerShadow(
+                blur: 4,
+                color: Color.fromARGB(60, 0, 0, 0),
+                offset: Offset(0, 4),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 57,
+                  width: 182,
+                  decoration: BoxDecoration(
+                    color: Color(0xffB61111),
+                    borderRadius: BorderRadius.circular(34),
+                  ),
+                  child: Text(
+                    '!بزن بریم',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'vazirb',
+                        fontSize:
+                            AdaptiveTextSize().getadaptiveTextSize(context, 17)),
+                  ),
                 ),
-                child: Text('!بزن بریم',
-                style:TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'vazirb',
-                  fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 17)
-                ) ,),
               ),
             )
           ],

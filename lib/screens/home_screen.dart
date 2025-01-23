@@ -1,5 +1,7 @@
 import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:flutter/material.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+
 import 'package:random_series/constans/inner_shadow.dart';
 import 'package:random_series/constans/responsive_text.dart';
 import 'package:random_series/data/project_manager.dart';
@@ -19,6 +21,7 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -43,16 +46,30 @@ class HomeScreen extends StatelessWidget {
               ),
               child: SizedBox(
                 width: size.width / 1.596,
-                child: Text(
-                  textAlign: TextAlign.center,
+                child: Directionality(
                   textDirection: TextDirection.rtl,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'vazirb',
-                      fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 18)),
-                  '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
+                  child: AnimatedTextKit(
+                    
+                                  totalRepeatCount: 1,
+                                  animatedTexts: [
+                                    TypewriterAnimatedText(
+                                      cursor: '',
+                                      
+                                      speed: Duration(milliseconds: 30),
+                                      textStyle: TextStyle(
+                                        
+                                        fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 18),
+                                        fontFamily: 'vazirb',
+                                        color: Colors.white,
+                                      ),
+                                      textAlign: TextAlign.center,
+                      '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
+                                    ),
+                                  ],
+                                ),
                 ),
               ),
+              
             ),
             SizedBox(
               height: 25,

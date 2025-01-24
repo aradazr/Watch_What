@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:random_series/screens/home_screen.dart';
-import 'package:random_series/screens/serial_screen.dart';
+import 'package:random_series/screens/my_profile_screen.dart';
 
 void main() {
   runApp(const MyApp());

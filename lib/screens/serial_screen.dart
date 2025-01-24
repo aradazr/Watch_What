@@ -1,10 +1,11 @@
 import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
-import 'package:random_series/cached_image.dart';
 import 'package:random_series/data/project_data.dart';
 import 'package:random_series/constans/responsive_text.dart';
 import 'package:random_series/data/project_manager.dart';
+import 'package:random_series/screens/my_profile_screen.dart';
 import 'package:random_series/widgets/bttn_widget.dart';
 
 class SerialScreen extends StatefulWidget {
@@ -64,6 +65,17 @@ class _SerialScreenState extends State<SerialScreen> {
                   //   fit: BoxFit.cover,
                   // )
                  CachedNetworkImage(
+                  imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
+                  errorWidget: (context, url, error) => SnackBar(
+                    backgroundColor: Colors.redAccent,
+                    content: Text('اینترنت شما قطع میباشد',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'vazirb',
+                    fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 14),
+                  ),
+                  )),
+                  placeholder: (context, url) =>  Image.asset('assets/images/background.png'),
                   imageUrl: 
                     currentSerial.imagePath,
                     
@@ -71,14 +83,14 @@ class _SerialScreenState extends State<SerialScreen> {
                   ),
                 ),
                 Container(
-                  width: double.infinity,
+                  width: size.width/1,
                   height: 20,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black,
-                        spreadRadius: 20,
-                        blurRadius: 40,
+                        spreadRadius: 40,
+                        blurRadius: 45,
                         offset: Offset(0, 3),
                       ),
                     ],
@@ -137,7 +149,7 @@ class _SerialScreenState extends State<SerialScreen> {
                         style: TextStyle(
                           fontFamily: 'vazirm',
                           fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 13),
-                          color: Color(0xff999999),
+                          color: const Color(0xff999999),
                         ),
                       ),
                     ),
@@ -152,7 +164,9 @@ class _SerialScreenState extends State<SerialScreen> {
                         size: size,
                         color: Color(0xff262626),
                         text: 'همینو میبینم',
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfileScreen()));
+                        },
                       ),
                       BttnWidget(
                         size: size,

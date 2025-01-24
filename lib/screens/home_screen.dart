@@ -6,7 +6,7 @@ import 'package:random_series/constans/inner_shadow.dart';
 import 'package:random_series/constans/responsive_text.dart';
 import 'package:random_series/data/project_manager.dart';
 import 'package:random_series/screens/serial_screen.dart';
-import 'package:random_series/data/project_data.dart';  // فرض بر این است که اینجا دیتای سریال ها قرار دارد.
+import 'package:random_series/data/project_data.dart'; // فرض بر این است که اینجا دیتای سریال ها قرار دارد.
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/background.png"),
+            image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -49,27 +49,24 @@ class HomeScreen extends StatelessWidget {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: AnimatedTextKit(
-                    
-                                  totalRepeatCount: 1,
-                                  animatedTexts: [
-                                    TypewriterAnimatedText(
-                                      cursor: '',
-                                      
-                                      speed: Duration(milliseconds: 30),
-                                      textStyle: TextStyle(
-                                        
-                                        fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 18),
-                                        fontFamily: 'vazirb',
-                                        color: Colors.white,
-                                      ),
-                                      textAlign: TextAlign.center,
-                      '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
-                                    ),
-                                  ],
-                                ),
+                    totalRepeatCount: 1,
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        cursor: '',
+                        speed: Duration(milliseconds: 30),
+                        textStyle: TextStyle(
+                          fontSize: AdaptiveTextSize()
+                              .getadaptiveTextSize(context, 18),
+                          fontFamily: 'vazirb',
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                        '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              
             ),
             SizedBox(
               height: 25,
@@ -102,8 +99,8 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'vazirb',
-                        fontSize:
-                            AdaptiveTextSize().getadaptiveTextSize(context, 17)),
+                        fontSize: AdaptiveTextSize()
+                            .getadaptiveTextSize(context, 17)),
                   ),
                 ),
               ),

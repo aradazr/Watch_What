@@ -2,6 +2,7 @@ import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:random_series/data/project_data.dart';
 import 'package:random_series/constans/responsive_text.dart';
 import 'package:random_series/data/project_manager.dart';
@@ -58,32 +59,31 @@ class _SerialScreenState extends State<SerialScreen> {
                 SizedBox(
                   height: size.height / 1.63,
                   width: size.width,
-                  child: 
-                  // CachedImage(
-                  //   imageUrl: currentSerial.imagePath,
-                  //   radius: 0,
-                  //   fit: BoxFit.cover,
-                  // )
-                 CachedNetworkImage(
-                  imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
-                  errorWidget: (context, url, error) => SnackBar(
-                    backgroundColor: Colors.redAccent,
-                    content: Text('اینترنت شما قطع میباشد',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'vazirb',
-                    fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 14),
-                  ),
-                  )),
-                  placeholder: (context, url) =>  Image.asset('assets/images/background.png'),
-                  imageUrl: 
-                    currentSerial.imagePath,
-                    
+                  child: CachedNetworkImage(
+                    imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
+                    errorWidget: (context, url, error) {
+                      return SnackBar(
+                          backgroundColor: Colors.redAccent,
+                          content: Text(
+                            'اینترنت شما قطع میباشد',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'vazirb',
+                              fontSize: const AdaptiveTextSize()
+                                  .getadaptiveTextSize(context, 14),
+                            ),
+                          ));
+                    },
+                    placeholder: (context, url) => const SpinKitSpinningLines(
+                      color: Colors.white,
+                      size: 89.0,
+                    ),
+                    imageUrl: currentSerial.imagePath,
                     fit: BoxFit.cover,
                   ),
                 ),
                 Container(
-                  width: size.width/1,
+                  width: size.width / 1,
                   height: 20,
                   decoration: const BoxDecoration(
                     boxShadow: [
@@ -106,7 +106,8 @@ class _SerialScreenState extends State<SerialScreen> {
                         style: TextStyle(
                           color: Colors.white,
                           fontFamily: 'mont',
-                          fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 14),
+                          fontSize: const AdaptiveTextSize()
+                              .getadaptiveTextSize(context, 14),
                         ),
                       ),
                       Image.asset('assets/images/star.png', height: 24),
@@ -120,7 +121,7 @@ class _SerialScreenState extends State<SerialScreen> {
             child: Container(
               alignment: Alignment.topCenter,
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.black,
               ),
               child: Column(
@@ -129,7 +130,8 @@ class _SerialScreenState extends State<SerialScreen> {
                     currentSerial.name,
                     style: TextStyle(
                       fontFamily: 'mont',
-                      fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 24),
+                      fontSize:
+                          const AdaptiveTextSize().getadaptiveTextSize(context, 24),
                       color: Colors.white,
                     ),
                   ),
@@ -148,7 +150,8 @@ class _SerialScreenState extends State<SerialScreen> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'vazirm',
-                          fontSize: AdaptiveTextSize().getadaptiveTextSize(context, 13),
+                          fontSize: const AdaptiveTextSize()
+                              .getadaptiveTextSize(context, 13),
                           color: const Color(0xff999999),
                         ),
                       ),
@@ -162,15 +165,18 @@ class _SerialScreenState extends State<SerialScreen> {
                     children: [
                       BttnWidget(
                         size: size,
-                        color: Color(0xff262626),
+                        color: const Color(0xff262626),
                         text: 'همینو میبینم',
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfileScreen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyProfileScreen()));
                         },
                       ),
                       BttnWidget(
                         size: size,
-                        color: Color(0xffB61111),
+                        color: const Color(0xffB61111),
                         text: '!دوباره سرچ کن',
                         onTap: getRandomSerial,
                       ),

@@ -23,7 +23,7 @@ class BttnWidget extends StatelessWidget {
           color: color,
           borderRadius: BorderRadius.circular(34),
         ),
-        child: Text(text,style: TextStyle(
+        child: Text(text,style: const TextStyle(
           color: Colors.white,
           fontFamily: 'vazirb',
           fontSize: 16

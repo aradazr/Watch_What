@@ -15,7 +15,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Color(0xff1A1A1A),
+      backgroundColor: const Color(0xff1A1A1A),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -28,7 +28,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
             height: size.height / 1.31,
             width: size.width / 1.2,
             decoration: BoxDecoration(
-              color: Color(0xff202020),
+              color: const Color(0xff202020),
               borderRadius: BorderRadius.circular(38),
             ),
             child: Column(
@@ -67,7 +67,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                         'ARADAZR.DEV',
                         style: TextStyle(
                           color: Colors.black,
-                          fontSize: AdaptiveTextSize()
+                          fontSize: const AdaptiveTextSize()
                               .getadaptiveTextSize(context, 12),
                         ),
                       ),
@@ -87,9 +87,9 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                       animatedTexts: [
                         TypewriterAnimatedText(
                             cursor: '',
-                            speed: Duration(milliseconds: 30),
+                            speed: const Duration(milliseconds: 30),
                             textStyle: TextStyle(
-                              fontSize: AdaptiveTextSize()
+                              fontSize: const AdaptiveTextSize()
                                   .getadaptiveTextSize(context, 18),
                               fontFamily: 'vazirb',
                               color: Colors.white,

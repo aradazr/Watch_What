@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_series/screens/home_screen.dart';
-import 'package:random_series/screens/my_profile_screen.dart';
+import 'package:random_series/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,11 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Watch What?',
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }

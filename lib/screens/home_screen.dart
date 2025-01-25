@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Container(
         alignment: Alignment.center,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/background.png'),
             fit: BoxFit.cover,
@@ -38,7 +38,7 @@ class HomeScreen extends StatelessWidget {
               width: size.width / 1.23,
               height: size.height / 2.68,
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
+                gradient: const LinearGradient(colors: [
                   Color.fromARGB(70, 182, 17, 17),
                   Color.fromARGB(70, 80, 8, 8)
                 ], begin: Alignment.topLeft, end: Alignment.bottomRight),
@@ -53,9 +53,9 @@ class HomeScreen extends StatelessWidget {
                     animatedTexts: [
                       TypewriterAnimatedText(
                         cursor: '',
-                        speed: Duration(milliseconds: 30),
+                        speed: const Duration(milliseconds: 30),
                         textStyle: TextStyle(
-                          fontSize: AdaptiveTextSize()
+                          fontSize: const AdaptiveTextSize()
                               .getadaptiveTextSize(context, 18),
                           fontFamily: 'vazirb',
                           color: Colors.white,
@@ -68,7 +68,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             GestureDetector(
@@ -84,14 +84,14 @@ class HomeScreen extends StatelessWidget {
               },
               child: InnerShadow(
                 blur: 4,
-                color: Color.fromARGB(60, 0, 0, 0),
-                offset: Offset(0, 4),
+                color: const Color.fromARGB(60, 0, 0, 0),
+                offset: const Offset(0, 4),
                 child: Container(
                   alignment: Alignment.center,
                   height: 57,
                   width: 182,
                   decoration: BoxDecoration(
-                    color: Color(0xffB61111),
+                    color: const Color(0xffB61111),
                     borderRadius: BorderRadius.circular(34),
                   ),
                   child: Text(
@@ -99,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'vazirb',
-                        fontSize: AdaptiveTextSize()
+                        fontSize: const AdaptiveTextSize()
                             .getadaptiveTextSize(context, 17)),
                   ),
                 ),

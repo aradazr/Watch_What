@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:random_series/screens/splash_screen.dart';
+import 'package:watch_what/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Watch What?',
+
       theme: ThemeData(
         useMaterial3: true,
       ),

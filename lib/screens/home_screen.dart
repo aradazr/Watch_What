@@ -1,12 +1,14 @@
 import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:watch_what/constans/inner_shadow.dart';
+import 'package:watch_what/constans/responsive_text.dart';
+import 'package:watch_what/data/project_manager.dart';
+import 'package:watch_what/screens/serial_screen.dart';
 
-import 'package:random_series/constans/inner_shadow.dart';
-import 'package:random_series/constans/responsive_text.dart';
-import 'package:random_series/data/project_manager.dart';
-import 'package:random_series/screens/serial_screen.dart';
-import 'package:random_series/data/project_data.dart'; // فرض بر این است که اینجا دیتای سریال ها قرار دارد.
+import '../data/project_data.dart';
+
+// فرض بر این است که اینجا دیتای سریال ها قرار دارد.
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

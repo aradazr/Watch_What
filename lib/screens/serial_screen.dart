@@ -3,11 +3,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:random_series/data/project_data.dart';
-import 'package:random_series/constans/responsive_text.dart';
-import 'package:random_series/data/project_manager.dart';
-import 'package:random_series/screens/my_profile_screen.dart';
-import 'package:random_series/widgets/bttn_widget.dart';
+import 'package:watch_what/constans/responsive_text.dart';
+import 'package:watch_what/data/project_data.dart';
+import 'package:watch_what/data/project_manager.dart';
+import 'package:watch_what/screens/my_profile_screen.dart';
+import 'package:watch_what/widgets/bttn_widget.dart';
 
 class SerialScreen extends StatefulWidget {
   final Series serial;

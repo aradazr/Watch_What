@@ -1,6 +1,6 @@
 // project_data.dart
 
-import 'package:random_series/data/project_manager.dart';
+import 'package:watch_what/data/project_manager.dart';
 
 final List<Series> projects = [
   Series(

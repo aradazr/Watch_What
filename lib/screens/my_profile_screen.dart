@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:random_series/constans/responsive_text.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:watch_what/constans/responsive_text.dart';
 
 class MyProfileScreen extends StatefulWidget {
   const MyProfileScreen({super.key});

@@ -3,6 +3,7 @@ dev_dependencies:
 
 flutter_launcher_icons:
   android: "launcher_icon"
+  background_color: "#0xff000000"
   ios: true
   image_path: "assets/images/watchwhatlogo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21

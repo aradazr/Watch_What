@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:watch_what/constans/responsive_text.dart';
 
 class BttnWidget extends StatelessWidget {
   const BttnWidget({
@@ -23,10 +24,11 @@ class BttnWidget extends StatelessWidget {
           color: color,
           borderRadius: BorderRadius.circular(34),
         ),
-        child: Text(text,style: const TextStyle(
+        child: Text(text,style: TextStyle(
           color: Colors.white,
           fontFamily: 'vazirb',
-          fontSize: 16
+          fontSize: AdaptiveTextSize()
+                                .getadaptiveTextSize(context, 13),
         ),),
       ),
     );

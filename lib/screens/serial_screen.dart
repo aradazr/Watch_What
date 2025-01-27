@@ -3,10 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/data/project_data.dart';
 import 'package:watch_what/data/project_manager.dart';
-import 'package:watch_what/screens/my_profile_screen.dart';
 import 'package:watch_what/widgets/bttn_widget.dart';
 
 class SerialScreen extends StatefulWidget {
@@ -130,13 +130,13 @@ class _SerialScreenState extends State<SerialScreen> {
                     currentSerial.name,
                     style: TextStyle(
                       fontFamily: 'mont',
-                      fontSize:
-                          const AdaptiveTextSize().getadaptiveTextSize(context, 24),
+                      fontSize: const AdaptiveTextSize()
+                          .getadaptiveTextSize(context, 24),
                       color: Colors.white,
                     ),
                   ),
                   SizedBox(
-                    height: size.height / 32.37,
+                    height: size.height / 45,
                   ),
                   SizedBox(
                     height: size.height / 6.33,
@@ -158,7 +158,7 @@ class _SerialScreenState extends State<SerialScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: size.height / 57,
+                    height: size.height / 300,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -167,12 +167,13 @@ class _SerialScreenState extends State<SerialScreen> {
                         size: size,
                         color: const Color(0xff262626),
                         text: 'همینو میبینم',
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MyProfileScreen()));
-                        },
+                        onTap: () async {
+                      final Uri url = Uri.parse(
+                          currentSerial.serialUrl);
+                      if (!await launchUrl(url)) {
+                        throw Exception('Could not launch');
+                      }
+                    },
                       ),
                       BttnWidget(
                         size: size,
@@ -181,6 +182,37 @@ class _SerialScreenState extends State<SerialScreen> {
                         onTap: getRandomSerial,
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: size.height / 50,
+                  ),
+                  GestureDetector(
+                    onTap: () async {
+                      final Uri url = Uri.parse(
+                          'https://www.instagram.com/aradazr.dev/profilecard/?igsh=dGhtMm92MXFna2Qx');
+                      if (!await launchUrl(url)) {
+                        throw Exception('Could not launch');
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'ساخته شده توسط آراد آذرپناه',
+                          style: TextStyle(
+                            color: const Color.fromARGB(255, 106, 106, 106),
+                            fontFamily: 'vazirb',
+                            fontSize: const AdaptiveTextSize()
+                                .getadaptiveTextSize(context, 10),
+                          ),
+                        ),
+                        SizedBox(
+                          width: size.width / 90,
+                        ),
+                        const Icon(Icons.link,
+                            color: Color.fromARGB(255, 106, 106, 106)),
+                      ],
+                    ),
                   ),
                 ],
               ),

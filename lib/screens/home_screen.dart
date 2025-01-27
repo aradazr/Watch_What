@@ -1,6 +1,7 @@
 import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:watch_what/constans/inner_shadow.dart';
 import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/data/project_manager.dart';
@@ -105,8 +106,8 @@ class HomeScreen extends StatelessWidget {
                             .getadaptiveTextSize(context, 17)),
                   ),
                 ),
-              ),
-            )
+              )
+            ).animate(autoPlay: true,).shake(delay: const Duration(seconds: 1))
           ],
         ),
       ),

@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:watch_what/constans/favorite_series_provider.dart';
+import 'package:watch_what/constans/watched_series_provider.dart';
 import 'package:watch_what/screens/splash_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => WatchedSeriesProvider()),
+        ChangeNotifierProvider(create: (context) => FavoriteSeriesProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Watch What?',
 
       theme: ThemeData(
+        
         useMaterial3: true,
       ),
       home: const SplashScreen(),

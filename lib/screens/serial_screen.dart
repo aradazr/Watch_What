@@ -3,11 +3,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:watch_what/constans/app_colors.dart';
+import 'package:watch_what/constans/favorite_series_provider.dart';
 import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/data/project_data.dart';
 import 'package:watch_what/data/project_manager.dart';
 import 'package:watch_what/widgets/bttn_widget.dart';
+import 'package:watch_what/widgets/upper_button.dart';
 
 class SerialScreen extends StatefulWidget {
   final Series serial;
@@ -20,6 +24,8 @@ class SerialScreen extends StatefulWidget {
 
 class _SerialScreenState extends State<SerialScreen> {
   late Series currentSerial;
+  bool isSelected1 = false;
+  bool isSelected2 = false;
 
   @override
   void initState() {
@@ -39,7 +45,7 @@ class _SerialScreenState extends State<SerialScreen> {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: DarkColors.black,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +94,7 @@ class _SerialScreenState extends State<SerialScreen> {
                   decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black,
+                        color: DarkColors.black,
                         spreadRadius: 40,
                         blurRadius: 45,
                         offset: Offset(0, 3),
@@ -104,7 +110,7 @@ class _SerialScreenState extends State<SerialScreen> {
                       Text(
                         currentSerial.point,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: DarkColors.white,
                           fontFamily: 'mont',
                           fontSize: const AdaptiveTextSize()
                               .getadaptiveTextSize(context, 14),
@@ -114,6 +120,59 @@ class _SerialScreenState extends State<SerialScreen> {
                     ],
                   ),
                 ),
+                Positioned(
+                  top: 65,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        UpperButton(
+                          size: size,
+                          image: 'assets/images/back.png',
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            UpperButton(
+                              size: size,
+                              image: isSelected2 == false
+                                  ? 'assets/images/watched.png'
+                                  : 'assets/images/watchedred.png',
+                              onTap: () {
+                                setState(() {
+                                  isSelected2 = !isSelected2;
+                                });
+                              },
+                            ),
+                            SizedBox(
+                              width: size.width / 45,
+                            ),
+                            UpperButton(
+                              size: size,
+                              image: context
+                                      .watch<FavoriteSeriesProvider>()
+                                      .isLiked(currentSerial)
+                                  ? 'assets/images/likered.png'
+                                  : 'assets/images/like.png',
+                              onTap: () {
+                                context
+                                    .read<FavoriteSeriesProvider>()
+                                    .toggleLike(currentSerial);
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -122,7 +181,7 @@ class _SerialScreenState extends State<SerialScreen> {
               alignment: Alignment.topCenter,
               width: double.infinity,
               decoration: const BoxDecoration(
-                color: Colors.black,
+                color: DarkColors.black,
               ),
               child: Column(
                 children: [
@@ -132,7 +191,7 @@ class _SerialScreenState extends State<SerialScreen> {
                       fontFamily: 'mont',
                       fontSize: const AdaptiveTextSize()
                           .getadaptiveTextSize(context, 24),
-                      color: Colors.white,
+                      color: DarkColors.white,
                     ),
                   ),
                   SizedBox(
@@ -152,7 +211,7 @@ class _SerialScreenState extends State<SerialScreen> {
                           fontFamily: 'vazirm',
                           fontSize: const AdaptiveTextSize()
                               .getadaptiveTextSize(context, 13),
-                          color: const Color(0xff999999),
+                          color: DarkColors.grey,
                         ),
                       ),
                     ),
@@ -165,19 +224,18 @@ class _SerialScreenState extends State<SerialScreen> {
                     children: [
                       BttnWidget(
                         size: size,
-                        color: const Color(0xff262626),
+                        color: DarkColors.greyButton,
                         text: 'همینو میبینم',
                         onTap: () async {
-                      final Uri url = Uri.parse(
-                          currentSerial.serialUrl);
-                      if (!await launchUrl(url)) {
-                        throw Exception('Could not launch');
-                      }
-                    },
+                          final Uri url = Uri.parse(currentSerial.serialUrl);
+                          if (!await launchUrl(url)) {
+                            throw Exception('Could not launch');
+                          }
+                        },
                       ),
                       BttnWidget(
                         size: size,
-                        color: const Color(0xffB61111),
+                        color: DarkColors.redButton,
                         text: '!دوباره سرچ کن',
                         onTap: getRandomSerial,
                       ),
@@ -200,7 +258,7 @@ class _SerialScreenState extends State<SerialScreen> {
                         Text(
                           'ساخته شده توسط آراد آذرپناه',
                           style: TextStyle(
-                            color: const Color.fromARGB(255, 106, 106, 106),
+                            color: DarkColors.grey,
                             fontFamily: 'vazirb',
                             fontSize: const AdaptiveTextSize()
                                 .getadaptiveTextSize(context, 10),
@@ -209,8 +267,7 @@ class _SerialScreenState extends State<SerialScreen> {
                         SizedBox(
                           width: size.width / 90,
                         ),
-                        const Icon(Icons.link,
-                            color: Color.fromARGB(255, 106, 106, 106)),
+                        const Icon(Icons.link, color: DarkColors.grey),
                       ],
                     ),
                   ),

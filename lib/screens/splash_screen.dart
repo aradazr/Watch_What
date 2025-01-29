@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:watch_what/constans/app_colors.dart';
 import 'dart:async';
 
 import 'home_screen.dart'; // صفحه HomeScreen
@@ -60,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Container(
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-            color: Colors.black,
+            color: DarkColors.black,
             image: DecorationImage(
               image: AssetImage('assets/images/splash.png'),
               fit: BoxFit.cover,
@@ -73,7 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: TextStyle(
                 fontFamily: 'vazirm',
                 fontSize: 18,
-                color: Colors.white,
+                color: DarkColors.white,
               ),
             ),
           ),
@@ -102,7 +103,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: size.height / 30.5,
             ),
             const SpinKitSpinningLines(
-              color: Colors.white,
+              color: DarkColors.white,
               size: 89.0,
             ),
           ],

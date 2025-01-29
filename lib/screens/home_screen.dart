@@ -2,10 +2,12 @@ import 'dart:math'; // برای تولید شماره تصادفی
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:watch_what/constans/app_colors.dart';
 import 'package:watch_what/constans/inner_shadow.dart';
 import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/data/project_manager.dart';
 import 'package:watch_what/screens/serial_screen.dart';
+import 'package:watch_what/screens/watched_and_liked_screen.dart';
 
 import '../data/project_data.dart';
 
@@ -24,7 +26,7 @@ class HomeScreen extends StatelessWidget {
     var size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: DarkColors.black,
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(
@@ -41,10 +43,10 @@ class HomeScreen extends StatelessWidget {
               width: size.width / 1.23,
               height: size.height / 2.68,
               decoration: BoxDecoration(
-                gradient: const LinearGradient(colors: [
-                  Color.fromARGB(70, 182, 17, 17),
-                  Color.fromARGB(70, 80, 8, 8)
-                ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                gradient: const LinearGradient(
+                    colors: DarkColors.primeryContainer,
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight),
                 borderRadius: BorderRadius.circular(39),
               ),
               child: SizedBox(
@@ -58,11 +60,10 @@ class HomeScreen extends StatelessWidget {
                         cursor: '',
                         speed: const Duration(milliseconds: 30),
                         textStyle: TextStyle(
-                          fontSize: const AdaptiveTextSize()
-                              .getadaptiveTextSize(context, 18),
-                          fontFamily: 'vazirb',
-                          color: Colors.white,
-                        ),
+                            fontSize: const AdaptiveTextSize()
+                                .getadaptiveTextSize(context, 18),
+                            fontFamily: 'vazirb',
+                            color: DarkColors.white),
                         textAlign: TextAlign.center,
                         '''اگر دنبال سریالی و نمیدونی چه سریالی تماشا کنی٬ جای درستی اومدی چون آرشیو بهترین سریالا اینجا قرار داره و بهت سریالایی معرفی میکنیم که چشم بسته میتونی قبول کنی و شروع به دیدن کنی.''',
                       ),
@@ -87,27 +88,41 @@ class HomeScreen extends StatelessWidget {
               },
               child: InnerShadow(
                 blur: 4,
-                color: const Color.fromARGB(60, 0, 0, 0),
+                color: DarkColors.buttonInnerShadow,
                 offset: const Offset(0, 4),
                 child: Container(
                   alignment: Alignment.center,
                   height: 57,
                   width: 182,
                   decoration: BoxDecoration(
-                    color: const Color(0xffB61111),
+                    color: DarkColors.redButton,
                     borderRadius: BorderRadius.circular(34),
                   ),
                   child: Text(
                     '!بزن بریم',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: DarkColors.white,
                         fontFamily: 'vazirb',
                         fontSize: const AdaptiveTextSize()
                             .getadaptiveTextSize(context, 17)),
                   ),
                 ),
-              )
-            ).animate(autoPlay: true,).shake(delay: const Duration(seconds: 1))
+              ),
+            )
+                .animate(
+                  autoPlay: true,
+                )
+                .shake(delay: const Duration(seconds: 1)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const WatchedAndLikedScreen()));
+                  },
+                  child: Container(
+                    height: 100,
+                    width: 200,
+                    color: Colors.amber,
+                  ),
+                )
           ],
         ),
       ),

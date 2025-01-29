@@ -14,8 +14,15 @@ class FavoriteSeriesProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+  
 
   bool isLiked(Series series) {
     return _likedSeries.contains(series);
   }
+
+  void removeLike(Series series) {
+    likedSeries.remove(series);
+    notifyListeners(); // اطلاع‌رسانی به تمامی ویجت‌هایی که به این داده‌ها نیاز دارند
+  }
+
 }

@@ -2,6 +2,7 @@ import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/material.dart';
 import 'package:watch_what/constans/app_colors.dart';
 import 'package:watch_what/screens/liked_screen.dart';
+import 'package:watch_what/screens/watched_screen.dart';
 
 class WatchedAndLikedScreen extends StatelessWidget {
   const WatchedAndLikedScreen({super.key});
@@ -56,12 +57,13 @@ class WatchedAndLikedScreen extends StatelessWidget {
                 fontSize: 16, fontFamily: 'mont', fontWeight: FontWeight.bold),
           ),
           tabs: const [
-            Text('First'),
-            Text('Second'),
+            Text('Liked'),
+            Text('Watched'),
           ],
           views: [
-            const WatchedScreen(),
-            Container(color: Colors.green),
+            LikedScreen(),
+             WatchedScreen(),
+            
           ],
         ),
       ),

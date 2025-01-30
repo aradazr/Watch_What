@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:watch_what/constans/app_colors.dart';
-import 'package:watch_what/constans/favorite_series_provider.dart';
+import 'package:watch_what/provider/favorite_series_provider.dart';
 import 'package:watch_what/widgets/liked_serial_container.dart';
 
 class LikedScreen extends StatelessWidget {

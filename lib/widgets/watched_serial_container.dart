@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image_platform_interface/cached_network_image_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:watch_what/constans/app_colors.dart';
@@ -86,7 +87,7 @@ class WatchedSerialContainer extends StatelessWidget {
           ClipRRect(
               borderRadius: BorderRadius.circular(14),
               child: CachedNetworkImage(
-                
+                imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                 imageUrl: series.imagePath,
                 height: 164,
                 width: 127,

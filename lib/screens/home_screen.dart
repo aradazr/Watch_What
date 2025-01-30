@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                         color: DarkColors.white,
                         fontFamily: 'vazirb',
                         fontSize: const AdaptiveTextSize()
-                            .getadaptiveTextSize(context, 17)),
+                            .getadaptiveTextSize(context, 15)),
                   ),
                 ),
               ),
@@ -113,16 +113,34 @@ class HomeScreen extends StatelessWidget {
                   autoPlay: true,
                 )
                 .shake(delay: const Duration(seconds: 1)),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const WatchedAndLikedScreen()));
-                  },
-                  child: Container(
-                    height: 100,
-                    width: 200,
-                    color: Colors.amber,
-                  ),
-                )
+            SizedBox(
+              height: size.height / 95,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WatchedAndLikedScreen()));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: size.height / 15.3,
+                width: size.width / 1.62,
+                decoration: BoxDecoration(
+                  color: DarkColors.greyButton,
+                  borderRadius: BorderRadius.circular(34),
+                ),
+                child: Text(
+                  'سریال های من',
+                  style: TextStyle(
+                      color: DarkColors.white,
+                      fontFamily: 'vazirb',
+                      fontSize: const AdaptiveTextSize()
+                          .getadaptiveTextSize(context, 15)),
+                ),
+              ),
+            )
           ],
         ),
       ),

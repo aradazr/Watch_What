@@ -49,9 +49,9 @@ class FavoriteSeriesProvider extends ChangeNotifier {
   }
 
   /// 📌 **بررسی اینکه آیا سریال لایک شده یا نه**
-  bool isLiked(Series series) {
-    return _likedSeries.contains(series);
-  }
+bool isLiked(Series series) {
+  return _likedSeries.any((s) => s.name == series.name);
+}
 
   /// 📌 **حذف سریال از لیست لایک‌شده‌ها**
   void removeLike(Series series) {

@@ -34,28 +34,34 @@ class WatchedScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(top: 10),
-                    child: Slidable(
-                      key: ValueKey(watchedSeries[index].name), // مشخص کردن کلید منحصر به فرد
-                      startActionPane: ActionPane(
-                        motion: const StretchMotion(), // امکان کشیدن به چپ
-                        children: [
-                          SlidableAction(
-                           
-                            autoClose: true,
-                            onPressed: (_) {
-                              context
-                                  .read<WatchedSeriesProvider>()
-                                  .removeFromWatched(watchedSeries[index]);
-                            },
-                            backgroundColor: Colors.red,
-                            icon: Icons.delete,
-                            label: 'حذف',
+                    child: Container(
+                      alignment:  Alignment.center,
+                      child: SizedBox(
+                        width: size.width / 1.1,
+                        child: Slidable(
+                          key: ValueKey(watchedSeries[index].name), // مشخص کردن کلید منحصر به فرد
+                          startActionPane: ActionPane(
+                            motion: const StretchMotion(), // امکان کشیدن به چپ
+                            children: [
+                              SlidableAction(
+                               
+                                autoClose: true,
+                                onPressed: (_) {
+                                  context
+                                      .read<WatchedSeriesProvider>()
+                                      .removeFromWatched(watchedSeries[index]);
+                                },
+                                backgroundColor: Colors.red,
+                                icon: Icons.delete,
+                                label: 'حذف',
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                      child: WatchedSerialContainer(
-                        size: size,
-                        series: watchedSeries[index], // پاس دادن سریال‌های لایک‌شده
+                          child: WatchedSerialContainer(
+                            size: size,
+                            series: watchedSeries[index], // پاس دادن سریال‌های لایک‌شده
+                          ),
+                        ),
                       ),
                     ),
                   );

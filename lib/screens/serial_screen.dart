@@ -32,6 +32,21 @@ class _SerialScreenState extends State<SerialScreen> {
   void initState() {
     super.initState();
     currentSerial = widget.serial; // مقداردهی اولیه
+     List<Series> availableSeries = projects
+      .where((project) =>
+          !context.read<WatchedSeriesProvider>().isWatched(project))
+      .toList();
+
+  if (availableSeries.isEmpty) {
+    currentSerial = Series(
+      name: "تمامی سریال ها تماشا شده اند",
+      description: "All series have been watched",
+      imagePath: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/03/high-rated-tv-shows-and-their-lowest-rated-episodes.jpg",
+      serialUrl: "https://google.com",
+      point: '0',
+    );
+  }
+
   }
 
   // تابع انتخاب سریال تصادفی
@@ -83,7 +98,9 @@ class _SerialScreenState extends State<SerialScreen> {
                 SizedBox(
                   height: size.height / 1.63,
                   width: size.width,
-                  child: CachedNetworkImage(
+                  child: 
+                  
+                  CachedNetworkImage(
                     imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                     errorWidget: (context, url, error) {
                       return SnackBar(
@@ -144,7 +161,9 @@ class _SerialScreenState extends State<SerialScreen> {
                   right: 0,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
+                    child: 
+                    
+                    Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -155,6 +174,7 @@ class _SerialScreenState extends State<SerialScreen> {
                             Navigator.pop(context);
                           },
                         ),
+                        if(currentSerial.name != "تمامی سریال ها تماشا شده اند")
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [

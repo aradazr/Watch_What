@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:watch_what/constans/app_colors.dart';
 import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/data/project_data.dart';
@@ -34,7 +36,7 @@ class LikedSerialContainer extends StatelessWidget {
             children: [
               Text(
                 series.name,
-                style: TextStyle(
+                style: const TextStyle(
                     color: DarkColors.white,
                     fontSize: 20,
                     fontFamily: 'mont',
@@ -78,12 +80,19 @@ class LikedSerialContainer extends StatelessWidget {
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(14),
-            child: Image.network(
-              series.imagePath,
-              width: 127,
-              height: 164,
-              fit: BoxFit.cover,
-            ),
+            child: CachedNetworkImage(
+                
+                imageUrl: series.imagePath,
+                height: 164,
+                width: 127,
+                fit: BoxFit.cover,
+                placeholder: (context, url) => const Center(
+                  child: SpinKitSpinningLines(
+                      color: Colors.white,
+                      size: 30.0,
+                    ),
+                ),
+              ),
           ),
         ],
       ),

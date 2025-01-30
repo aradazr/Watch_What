@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:watch_what/constans/favorite_series_provider.dart';
 import 'package:watch_what/constans/watched_series_provider.dart';
+import 'package:watch_what/data/project_manager.dart';
+import 'package:watch_what/data/series_hive.dart';
 import 'package:watch_what/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+  
+  // مقداردهی اولیه هایو
+  await Hive.initFlutter();
+  
+  // ثبت آداپتور (اگر مدل سریال دارید)
+  Hive.registerAdapter(SeriesAdapter()); 
+
+  // باز کردن باکس‌های موردنیاز
+  await Hive.openBox<HiveSeries>('watchedSeries');
+  await Hive.openBox<HiveSeries>('favoriteSeries');
   runApp(
     MultiProvider(
       providers: [

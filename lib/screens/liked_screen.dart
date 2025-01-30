@@ -25,35 +25,51 @@ class LikedScreen extends StatelessWidget {
               ),
             )
           : Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20,),
               child: ListView.builder(
+                
                 itemCount: likedSeries.length,
                 padding: const EdgeInsets.only(top: 10),
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.only(top: 10),
-                    child: Slidable(
-                      key: ValueKey(likedSeries[index].name), // مشخص کردن کلید منحصر به فرد
-                      startActionPane: ActionPane(
-                        motion: const StretchMotion(), // امکان کشیدن به چپ
-                        children: [
-                          SlidableAction(
-                           
-                            autoClose: true,
-                            onPressed: (_) {
-                              context
-                                  .read<FavoriteSeriesProvider>()
-                                  .removeLike(likedSeries[index]);
-                            },
-                            backgroundColor: Colors.red,
-                            icon: Icons.delete,
-                            label: 'حذف',
+                    child: IntrinsicHeight(
+
+                      child: Container(
+                        width: size.width /1.1,
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          width: size.width / 1.1,
+                          child: Slidable(
+                            direction: Axis.horizontal,
+                            
+                            closeOnScroll: true,
+                            key: ValueKey(likedSeries[index].name), // مشخص کردن کلید منحصر به فرد
+                            startActionPane: ActionPane(
+                          
+                              motion: const StretchMotion(), // امکان کشیدن به چپ
+                              children: [
+                                SlidableAction(
+                                 
+                                  autoClose: true,
+                                  onPressed: (_) {
+                                    context
+                                        .read<FavoriteSeriesProvider>()
+                                        .removeLike(likedSeries[index]);
+                                  },
+                                  backgroundColor: Colors.red,
+                                  icon: Icons.delete,
+                                  label: 'حذف',
+                                  
+                                ),
+                              ],
+                            ),
+                            child: LikedSerialContainer(
+                              size: size,
+                              series: likedSeries[index], // پاس دادن سریال‌های لایک‌شده
+                            ),
                           ),
-                        ],
-                      ),
-                      child: LikedSerialContainer(
-                        size: size,
-                        series: likedSeries[index], // پاس دادن سریال‌های لایک‌شده
+                        ),
                       ),
                     ),
                   );

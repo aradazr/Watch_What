@@ -1,4 +1,4 @@
-package com.example.random_series
+package com.example.watchwhat
 
 import io.flutter.embedding.android.FlutterActivity
 

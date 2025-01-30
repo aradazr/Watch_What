@@ -29,57 +29,60 @@ class WatchedSerialContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            spacing: 7,
-            children: [
-              SizedBox(
-                width: size.width / 2,
-                child: Text(
-                  textAlign: TextAlign.right,
-                  textDirection: TextDirection.rtl,
-                  series.name,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      color: DarkColors.white,
-                      fontSize: 20,
-                      fontFamily: 'mont',
-                      fontWeight: FontWeight.bold),
+          SizedBox(
+            width: size.width / 2,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              spacing: 7,
+              children: [
+                SizedBox(
+                  width: size.width / 2,
+                  child: Text(
+                    textAlign: TextAlign.right,
+                    textDirection: TextDirection.rtl,
+                    series.name,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                        color: DarkColors.white,
+                        fontSize: 20,
+                        fontFamily: 'mont',
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    series.point,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      series.point,
+                      style: TextStyle(
+                        color: DarkColors.white,
+                        fontFamily: 'mont',
+                        fontSize: const AdaptiveTextSize()
+                            .getadaptiveTextSize(context, 16),
+                      ),
+                    ),
+                    Image.asset('assets/images/star.png', height: 24),
+                  ],
+                ),
+                SizedBox(
+                  width: 200,
+                  child: Text(
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.start,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                    series.description,
                     style: TextStyle(
                       color: DarkColors.white,
-                      fontFamily: 'mont',
+                      fontFamily: 'vazirm',
                       fontSize: const AdaptiveTextSize()
-                          .getadaptiveTextSize(context, 16),
+                          .getadaptiveTextSize(context, 12),
                     ),
                   ),
-                  Image.asset('assets/images/star.png', height: 24),
-                ],
-              ),
-              SizedBox(
-                width: 200,
-                child: Text(
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.start,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  series.description,
-                  style: TextStyle(
-                    color: DarkColors.white,
-                    fontFamily: 'mont',
-                    fontSize: const AdaptiveTextSize()
-                        .getadaptiveTextSize(context, 12),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           SizedBox(
             width: size.width / 40,
@@ -89,8 +92,8 @@ class WatchedSerialContainer extends StatelessWidget {
               child: CachedNetworkImage(
                 imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                 imageUrl: series.imagePath,
-                height: 164,
-                width: 127,
+                height: size.height / 5.32,
+                width: size.width / 3.165,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
                   child: SpinKitSpinningLines(
@@ -99,12 +102,7 @@ class WatchedSerialContainer extends StatelessWidget {
                     ),
                 ),
               )
-              // Image.network(
-              //   series.imagePath,
-              //   width: 127,
-              //   height: 164,
-              //   fit: BoxFit.cover,
-              // ),
+              
               ),
         ],
       ),

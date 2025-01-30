@@ -60,7 +60,7 @@ class WatchedAndLikedScreen extends StatelessWidget {
             Text('Liked'),
             Text('Watched'),
           ],
-          views: [
+          views: const [
             LikedScreen(),
              WatchedScreen(),
             

@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                         speed: const Duration(milliseconds: 30),
                         textStyle: TextStyle(
                             fontSize: const AdaptiveTextSize()
-                                .getadaptiveTextSize(context, 18),
+                                .getadaptiveTextSize(context, 17),
                             fontFamily: 'vazirb',
                             color: DarkColors.white),
                         textAlign: TextAlign.center,

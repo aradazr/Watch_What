@@ -61,15 +61,7 @@ class _SerialScreenState extends State<SerialScreen> {
       if (availableSeries.isNotEmpty) {
         currentSerial =
             availableSeries[Random().nextInt(availableSeries.length)];
-      } else {
-        // اگر هیچ سریالی برای نمایش یافت نشد
-        currentSerial = Series(
-            name: "تمامی سریال ها تماشا شده اند",
-            description: "All series have been watched",
-            imagePath: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/03/high-rated-tv-shows-and-their-lowest-rated-episodes.jpg",
-            serialUrl: "https://google.com",
-            point: '0');
-      }
+      } 
     });
   }
 
@@ -84,6 +76,7 @@ class _SerialScreenState extends State<SerialScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedSwitcher(
+            
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (Widget child, Animation<double> animation) {
               return FadeTransition(

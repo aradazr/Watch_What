@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:watch_what/constans/app_colors.dart';
-import 'package:watch_what/provider/favorite_series_provider.dart';
 import 'package:watch_what/provider/watched_series_provider.dart';
-import 'package:watch_what/widgets/liked_serial_container.dart';
 import 'package:watch_what/widgets/watched_serial_container.dart';
 
 class WatchedScreen extends StatelessWidget {
@@ -64,10 +63,24 @@ class WatchedScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                  );
+                  ).animate()
+                      .slideX(
+                        begin: 1, // شروع از سمت راست
+                        end: 0, // پایان در موقعیت عادی
+                        duration:
+                            300.ms + (index * 100).ms, // تأخیر برای هر آیتم
+                        curve: Curves.easeOut,
+                      )
+                      .fade(duration: 300.ms, delay: (index * 100).ms);
                 },
-              ),
+              ).animate(
+                    autoPlay: true,
+                  )
+                  
+                  .shimmer(
+                    delay: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 700),
             ),
-    );
+    ));
   }
 }

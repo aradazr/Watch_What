@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:watch_what/provider/favorite_series_provider.dart';
 import 'package:watch_what/provider/watched_series_provider.dart';
@@ -18,7 +19,11 @@ void main() async {
   // باز کردن باکس‌های موردنیاز
   await Hive.openBox<HiveSeries>('watchedSeries');
   await Hive.openBox<HiveSeries>('favoriteSeries');
-  runApp(
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, // فقط حالت عمودی رو به بالا
+    DeviceOrientation.portraitDown, // حالت عمودی رو به پایین
+  ]).then((_) {{
+    runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => WatchedSeriesProvider()),
@@ -27,6 +32,8 @@ void main() async {
       child: const MyApp(),
     ),
   );
+  }});
+  
 }
 
 class MyApp extends StatelessWidget {

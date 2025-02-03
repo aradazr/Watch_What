@@ -11,6 +11,7 @@ import 'package:watch_what/constans/responsive_text.dart';
 import 'package:watch_what/provider/watched_series_provider.dart';
 import 'package:watch_what/data/project_data.dart';
 import 'package:watch_what/data/project_manager.dart';
+import 'package:watch_what/screens/watched_and_liked_screen.dart';
 import 'package:watch_what/widgets/bttn_widget.dart';
 import 'package:watch_what/widgets/upper_button.dart';
 
@@ -32,27 +33,31 @@ class _SerialScreenState extends State<SerialScreen> {
   void initState() {
     super.initState();
     currentSerial = widget.serial; // مقداردهی اولیه
-     List<Series> availableSeries = projects
-      .where((project) =>
-          !context.read<WatchedSeriesProvider>().isWatched(project))
-      .toList();
 
-  if (availableSeries.isEmpty) {
-    currentSerial = Series(
-      name: "تمامی سریال ها تماشا شده اند",
-      description: "All series have been watched",
-      imagePath: "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/03/high-rated-tv-shows-and-their-lowest-rated-episodes.jpg",
-      serialUrl: "https://google.com",
-      point: '0',
-    );
+    List<Series> availableSeries = projects
+        .where((project) =>
+            !context.read<WatchedSeriesProvider>().isWatched(project))
+        .toList();
+
+    if (availableSeries.isEmpty) {
+      currentSerial = Series(
+        name: "تمامی سریال ها تماشا شده اند",
+        description: "All series have been watched",
+        imagePath:
+            "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/03/high-rated-tv-shows-and-their-lowest-rated-episodes.jpg",
+        serialUrl: "https://google.com",
+        point: '0',
+      );
+    } else {
+      currentSerial = availableSeries.first;
+    }
+
+    setState(() {}); // 🔹 فقط یک بار setState()
   }
 
-  }
-
-  // تابع انتخاب سریال تصادفی
+// تابع انتخاب سریال تصادفی
   void getRandomSerial() {
     setState(() {
-      // حذف سریال‌های دیده شده از لیست پروژه‌ها
       List<Series> availableSeries = projects
           .where((project) =>
               !context.read<WatchedSeriesProvider>().isWatched(project))
@@ -61,7 +66,16 @@ class _SerialScreenState extends State<SerialScreen> {
       if (availableSeries.isNotEmpty) {
         currentSerial =
             availableSeries[Random().nextInt(availableSeries.length)];
-      } 
+      } else {
+        currentSerial = Series(
+          name: "تمامی سریال ها تماشا شده اند",
+          description: "All series have been watched",
+          imagePath:
+              "https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/03/high-rated-tv-shows-and-their-lowest-rated-episodes.jpg",
+          serialUrl: "https://google.com",
+          point: '0',
+        );
+      }
     });
   }
 
@@ -76,7 +90,6 @@ class _SerialScreenState extends State<SerialScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           AnimatedSwitcher(
-            
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (Widget child, Animation<double> animation) {
               return FadeTransition(
@@ -91,9 +104,7 @@ class _SerialScreenState extends State<SerialScreen> {
                 SizedBox(
                   height: size.height / 1.63,
                   width: size.width,
-                  child: 
-                  
-                  CachedNetworkImage(
+                  child: CachedNetworkImage(
                     imageRenderMethodForWeb: ImageRenderMethodForWeb.HttpGet,
                     errorWidget: (context, url, error) {
                       return SnackBar(
@@ -154,9 +165,7 @@ class _SerialScreenState extends State<SerialScreen> {
                   right: 0,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: 
-                    
-                    Row(
+                    child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -167,41 +176,42 @@ class _SerialScreenState extends State<SerialScreen> {
                             Navigator.pop(context);
                           },
                         ),
-                        if(currentSerial.name != "تمامی سریال ها تماشا شده اند")
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            UpperButton(
-                              size: size,
-                              image: context
-                                      .watch<WatchedSeriesProvider>()
-                                      .isWatched(currentSerial)
-                                  ? 'assets/images/watchedred.png'
-                                  : 'assets/images/watched.png',
-                              onTap: () {
-                                context
-                                    .read<WatchedSeriesProvider>()
-                                    .addToWatched(currentSerial);
-                              },
-                            ),
-                            SizedBox(
-                              width: size.width / 45,
-                            ),
-                            UpperButton(
-                              size: size,
-                              image: context
-                                      .watch<FavoriteSeriesProvider>()
-                                      .isLiked(currentSerial)
-                                  ? 'assets/images/likered.png'
-                                  : 'assets/images/like.png',
-                              onTap: () {
-                                context
-                                    .read<FavoriteSeriesProvider>()
-                                    .toggleLike(currentSerial);
-                              },
-                            ),
-                          ],
-                        )
+                        if (currentSerial.name !=
+                            "تمامی سریال ها تماشا شده اند")
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              UpperButton(
+                                size: size,
+                                image: context
+                                        .watch<WatchedSeriesProvider>()
+                                        .isWatched(currentSerial)
+                                    ? 'assets/images/watchedred.png'
+                                    : 'assets/images/watched.png',
+                                onTap: () {
+                                  context
+                                      .read<WatchedSeriesProvider>()
+                                      .toggleWatched(currentSerial);
+                                },
+                              ),
+                              SizedBox(
+                                width: size.width / 45,
+                              ),
+                              UpperButton(
+                                size: size,
+                                image: context
+                                        .watch<FavoriteSeriesProvider>()
+                                        .isLiked(currentSerial)
+                                    ? 'assets/images/likered.png'
+                                    : 'assets/images/like.png',
+                                onTap: () {
+                                  context
+                                      .read<FavoriteSeriesProvider>()
+                                      .toggleLike(currentSerial);
+                                },
+                              ),
+                            ],
+                          )
                       ],
                     ),
                   ),
@@ -258,12 +268,13 @@ class _SerialScreenState extends State<SerialScreen> {
                       BttnWidget(
                         size: size,
                         color: DarkColors.greyButton,
-                        text: 'همینو میبینم',
-                        onTap: () async {
-                          final Uri url = Uri.parse(currentSerial.serialUrl);
-                          if (!await launchUrl(url)) {
-                            throw Exception('Could not launch');
-                          }
+                        text: 'سریال های من',
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const WatchedAndLikedScreen()));
                         },
                       ),
                       BttnWidget(

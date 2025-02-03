@@ -706,4 +706,46 @@ final List<Series> projects = [
       imagePath: 'https://m.media-amazon.com/images/M/MV5BNGNlYjM3NjktMDc2MS00NDMxLTljNDQtNmY5MzAwYzExNzI0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
       point: '8.7',
       serialUrl: 'https://digimoviez.com/serie/severance/'),
+  Series(
+      name: 'Daryl Dixon',
+      description: 'داستان دریل دیکسون که پس از جدایی از گروه قدیمی‌اش حالا در فرانسه در هم شکسته سرگردان شده و دنبال راهی برای بازگشت به خانه است',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BNTQ1OWUyYzgtYWRiZC00ZDhlLWEwMmQtYzA3MGZiOTdlMDNjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '7.6',
+      serialUrl: 'https://digimoviez.com/serie/the-walking-dead-daryl-dixon/'),
+  Series(
+      name: 'The ones who live',
+      description: 'داستان عاشقانه ریک و میشون توسط دنیایی که دائماً در حال تغییر است، کاملاً عوض شده. حالا باید دید آیا آن‌ها وارد جنگی در برابر انسان‌ها می‌شوند یا متوجه خواهند شد که خودشان نیز مردگانی متحرک هستند',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BNzRkMzA5NDEtMjc5OC00ZTYxLWI0NmYtNTJjNjdhMTk0MTlhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '7.8',
+      serialUrl: 'https://digimoviez.com/serie/the-walking-dead-the-ones-who-live/'),
+  Series(
+      name: 'Dead city',
+      description: 'داستان مگی و نیگان که با هم در حال سفر به منهتن آخرالزمانی هستند. جایی که در حال فروپاشی است و پر است از خطر، وحشت، هرج و مرج و زامبی‌هایی که نیویورک را به دنیای خود تبدیل کرده‌اند',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BYWI0ZjgxYWYtODZmNi00ZWI0LWI4MmEtZDBmOTNmMTRlMjY0XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '7.2',
+      serialUrl: 'https://digimoviez.com/serie/the-walking-dead-dead-city/'),
+  Series(
+      name: 'When they see us',
+      description: 'داستان این مجموعهٔ تلویزیونی بر اساس پروندهٔ جاگر سنترال پارک نیویورک (حمله و تجاوز به تریشا میلی زن ۲۸ سالهٔ سفیدپوست آمریکایی) و در مورد ۵ نوجوان سیاه‌پوست است که به اتهام تجاوز جنسی و حمله به یک زن در سال ۱۹۸۹ در سنترال پارک شهر نیویورک بازداشت و محاکمه می‌شوند',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BMGU0MDIzZTAtYjBjZi00ZDQ1LThlYzctNWJkOWU4NTI5OWNkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '8.9',
+      serialUrl: 'https://digimoviez.com/serie/when-they-see-us/'),
+  Series(
+      name: 'Black Mirror',
+      description: 'این سریال در هر قسمت از خود با داستان های فوق العاده زیبا و متفاوت سعی دارد اعتراضی نسبت به پیشرفت روز افزون تکنولوژی و اعتیاد مردم به آنرا نشان دهند که بصورت روز افزون در حال پیشترفت در زندگی انسان هاست',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BMjg5ZDM4MzQtMzMwYS00NmFmLTkzNGYtYjA1ZDZkZTc4YTA1XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '8.7',
+      serialUrl: 'https://digimoviez.com/serie/black-mirror/'),
+  Series(
+      name: 'Succession',
+      description: 'داستان حول خانواده‌ای به‌نام روی متمرکز گشته است که صاحب امپراطوری رسانه‌ای عظیمی بوده و با وجود داشتن قدرت و ثروت فراوان عملکرد به شدت ناکارآمدی دارند. لوگان روی که فردی پا به سن گذاشته و بزرگتر خاندان می باشد ریاست این تجارت خانوادگی را بر عهده داشته و بنا دارد تا پس از خود اداره امور را به پسر بزرگترش کندال که هم اکنون نیز ریاست بخشی از شرکت را عهده دار است واگذار نماید. این در حالیست که برادر کوچکتر صریح و دوست داشتنی کندال به نام روم که هنوز در هیات مدیر حضور دارد دیگر در شرکت کار نکرده و شیو تنها دختر خانواده نیز به دنبال ساخت آینده ی برای خود در دنیای سیاست می باشد',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BMWFhODc0YmEtZjMyYy00MjQ4LTgwOGMtYmM4NTYwNWY2ZWY2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '8.9',
+      serialUrl: 'https://digimoviez.com/serie/succession/'),
+  Series(
+      name: 'Love & Death',
+      description: 'سریال عشق و مرگ داستان یک زوج را روایت می کند که به شدت اهل کلیسا رفتن هستند و در یک شهر کوچک در ایالت تگزاس از زندگی شان لذت می برند تا این که یک قاتل تبر به دست قصد جان آن ها را می کند',
+      imagePath: 'https://m.media-amazon.com/images/M/MV5BYjkwYzU3MWItMzkwMi00MmZhLWEzMzAtZDcwN2MwYTU0NTRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
+      point: '7.5',
+      serialUrl: 'https://digimoviez.com/serie/love-death/'),
 ];

@@ -7,20 +7,19 @@ class WatchedSeriesProvider extends ChangeNotifier {
   final List<Series> _watchedSeries = [];
   late Box<HiveSeries> _watchedBox;
 
-  List<Series> get watchedSeries => _watchedSeries;
+  List<Series> get watchedSeries => List.unmodifiable(_watchedSeries);
 
   WatchedSeriesProvider() {
     _loadWatchedSeries();
   }
 
   /// 📌 **لود کردن سریال‌های دیده‌شده از Hive**
-  void _loadWatchedSeries() async {
+  Future<void> _loadWatchedSeries() async {
     _watchedBox = Hive.box<HiveSeries>('watchedSeries');
     _watchedSeries.clear();
 
     for (var item in _watchedBox.values) {
-      _watchedSeries.add(
-        Series(
+      _watchedSeries.add(Series(
         name: item.name,
         description: item.description,
         point: item.point,
@@ -31,35 +30,29 @@ class WatchedSeriesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// 📌 **افزودن سریال به لیست دیده‌شده**
-  void addToWatched(Series series) {
-  // بررسی اینکه آیا این سریال قبلاً دیده شده یا خیر
-  if (!_watchedSeries.contains(series)) { // استفاده از `name` برای مقایسه
-    _watchedSeries.add(series); // اضافه کردن نام سریال به لیست دیده‌شده‌ها
-    
-    // ذخیره اطلاعات سریال در Hive با استفاده از HiveSeries
-    _watchedBox.put(series.name, HiveSeries(
-      name: series.name,
-      description: series.description,
-      point: series.point,
-      serialUrl: series.serialUrl,
-      imagePath: series.imagePath,
-    ));
-    
-    // اطلاع‌رسانی به لیisteners
-    notifyListeners();
-  }
-}
+  /// 📌 **اضافه یا حذف سریال از لیست دیده‌شده**
+  void toggleWatched(Series series) {
+    final isAlreadyWatched = _watchedSeries.any((s) => s.name == series.name);
 
-  /// 📌 **حذف سریال از لیست دیده‌شده**
-  void removeFromWatched(Series series) {
-    _watchedSeries.remove(series);
-    _watchedBox.delete(series.name);
+    if (isAlreadyWatched) {
+      _watchedSeries.removeWhere((s) => s.name == series.name);
+      _watchedBox.delete(series.name);
+    } else {
+      _watchedSeries.add(series);
+      _watchedBox.put(series.name, HiveSeries(
+        name: series.name,
+        description: series.description,
+        point: series.point,
+        serialUrl: series.serialUrl,
+        imagePath: series.imagePath,
+      ));
+    }
+
     notifyListeners();
   }
 
   /// 📌 **بررسی اینکه آیا سریال دیده شده است یا نه**
   bool isWatched(Series series) {
-    return _watchedSeries.contains(series);
+    return _watchedSeries.any((s) => s.name == series.name);
   }
 }

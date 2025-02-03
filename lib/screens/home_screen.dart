@@ -92,8 +92,8 @@ class HomeScreen extends StatelessWidget {
                 offset: const Offset(0, 4),
                 child: Container(
                   alignment: Alignment.center,
-                  height: 57,
-                  width: 182,
+                  height: size.height / 15.3,
+                  width: size.width / 2,
                   decoration: BoxDecoration(
                     color: DarkColors.redButton,
                     borderRadius: BorderRadius.circular(34),
@@ -113,34 +113,6 @@ class HomeScreen extends StatelessWidget {
                   autoPlay: true,
                 )
                 .shake(delay: const Duration(seconds: 1)),
-            SizedBox(
-              height: size.height / 95,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const WatchedAndLikedScreen()));
-              },
-              child: Container(
-                alignment: Alignment.center,
-                height: size.height / 15.3,
-                width: size.width / 1.62,
-                decoration: BoxDecoration(
-                  color: DarkColors.greyButton,
-                  borderRadius: BorderRadius.circular(34),
-                ),
-                child: Text(
-                  'سریال های من',
-                  style: TextStyle(
-                      color: DarkColors.white,
-                      fontFamily: 'vazirb',
-                      fontSize: const AdaptiveTextSize()
-                          .getadaptiveTextSize(context, 15)),
-                ),
-              ),
-            )
           ],
         ),
       ),

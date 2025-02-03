@@ -48,7 +48,7 @@ class WatchedScreen extends StatelessWidget {
                                 onPressed: (_) {
                                   context
                                       .read<WatchedSeriesProvider>()
-                                      .removeFromWatched(watchedSeries[index]);
+                                      .toggleWatched(watchedSeries[index]);
                                 },
                                 backgroundColor: Colors.red,
                                 icon: Icons.delete,
